@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TugasApplication {
+public class ApiWilayah {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TugasApplication.class, args);
+		SpringApplication.run(ApiWilayah.class, args);
 	}
 
 }
