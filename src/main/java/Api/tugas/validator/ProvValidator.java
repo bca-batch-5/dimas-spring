@@ -18,7 +18,7 @@ public class ProvValidator {
     @Autowired
     ProvinsiRepo provinsiRepo;
 
-    public ResponseData<Object> getProvValidation(Provinsi code) {
+    public ResponseData<Object> getProvValidation(Integer code) {
         if (code == null) {
             List<Provinsi> provinsi = provinsiRepo.findAll();
             responseData = new ResponseData<Object>(HttpStatus.FOUND.value(), "success", provinsi);

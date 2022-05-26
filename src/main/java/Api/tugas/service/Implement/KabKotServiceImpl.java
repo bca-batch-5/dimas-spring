@@ -7,8 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import Api.tugas.dto.KabKotDto;
 import Api.tugas.dto.ResponseData;
-import Api.tugas.dto.request.KabKotDto;
 import Api.tugas.model.KabupatenKota;
 import Api.tugas.model.Provinsi;
 import Api.tugas.repository.KabKotRepo;

@@ -1,7 +1,6 @@
 package Api.tugas.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,39 +12,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import Api.tugas.dto.ProvinsiDto;
+import Api.tugas.dto.KecamatanDto;
 import Api.tugas.dto.ResponseData;
-import Api.tugas.service.ProvService;
+import Api.tugas.service.KecamatanService;
 
 @RestController
-@RequestMapping("/provinsi")
-public class ProvController {
+@RequestMapping("/kecamatan")
+public class KecamatanContr {
     @Autowired
-    private ProvService provService;
+    KecamatanService kecamatanService;
 
-    private ResponseData<Object> responseData;
-
-    @GetMapping
-    public ResponseEntity<?> getProv(@RequestParam(value = "code", defaultValue = "") Integer code) {
-        responseData = provService.getAllProv(code);
-        return ResponseEntity.status(responseData.getStatus()).body(responseData);
-    }
+    ResponseData<Object> responseData;
 
     @PostMapping
-    public ResponseEntity<?> createProv(@RequestBody ProvinsiDto provinsiDto) {
-        responseData = provService.createProv(provinsiDto);
+    public ResponseEntity<Object> createKecamatan(@RequestBody KecamatanDto kecamatanDto) {
+        responseData = kecamatanService.createKec(kecamatanDto);
+        return ResponseEntity.status(responseData.getStatus()).body(responseData);
+
+    }
+
+    @GetMapping
+    public ResponseEntity<Object> getKecamatan(@RequestParam(value = "code", defaultValue = "") Integer code) {
+        responseData = kecamatanService.getAllKec(code);
         return ResponseEntity.status(responseData.getStatus()).body(responseData);
     }
 
     @PutMapping("/{code}")
-    public ResponseEntity<?> updateProv(@PathVariable Integer code, @RequestBody ProvinsiDto provinsiDto) {
-        responseData = provService.updateProv(code, provinsiDto);
+    public ResponseEntity<Object> updateKecamatan(@PathVariable Integer code, @RequestBody KecamatanDto kecamatanDto){
+        responseData = kecamatanService.updateKec(code, kecamatanDto);
         return ResponseEntity.status(responseData.getStatus()).body(responseData);
     }
 
     @DeleteMapping("/{code}")
-    public ResponseEntity<?> deleteProv(@PathVariable Integer code) {
-        responseData = provService.deletePRov(code);
+    public ResponseEntity<Object> deleteKecamatan(@PathVariable Integer code) {
+        responseData = kecamatanService.deleteKec(code);
         return ResponseEntity.status(responseData.getStatus()).body(responseData);
     }
 }

@@ -32,20 +32,20 @@ public class ProvServiceImpl implements ProvService {
     }
 
     @Override
-    public ResponseData<Object> getAllProv(Provinsi code) {
+    public ResponseData<Object> getAllProv(Integer code) {
         responseData = provValidator.getProvValidation(code);
         return responseData;
     }
 
     @Override
-    public ResponseData<Object> updateProv(Provinsi code, ProvinsiDto provinsiDto) {
+    public ResponseData<Object> updateProv(Integer code, ProvinsiDto provinsiDto) {
         Provinsi provinsiOpt = provinsiRepo.findByprovCode(code);
         responseData = provValidator.updateProvValidation(provinsiOpt, provinsiDto);
         return responseData;
     }
 
     @Override
-    public ResponseData<Object> deletePRov(Provinsi code) {
+    public ResponseData<Object> deletePRov(Integer code) {
         Provinsi provinsiOpt = provinsiRepo.findByprovCode(code);
         responseData = provValidator.deleteProvValidation(provinsiOpt);
         return responseData;

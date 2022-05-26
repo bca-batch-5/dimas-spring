@@ -1,10 +1,9 @@
-package Api.tugas.dto.request;
-import Api.tugas.model.Provinsi;
+package Api.tugas.dto;
 import lombok.Data;
 
 @Data
 public class KabKotDto {
     private Integer kodeKabupatenKota;
     private String kabupatenKota;
-    private Provinsi kodeProvinsi;
+    private Integer kodeProvinsi;
 }

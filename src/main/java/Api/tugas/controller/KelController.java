@@ -1,7 +1,6 @@
 package Api.tugas.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,39 +12,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import Api.tugas.dto.ProvinsiDto;
+import Api.tugas.dto.KelurahanDto;
 import Api.tugas.dto.ResponseData;
-import Api.tugas.service.ProvService;
+import Api.tugas.service.KelurahanService;
 
 @RestController
-@RequestMapping("/provinsi")
-public class ProvController {
+@RequestMapping("/kelurahan")
+public class KelController {
+    ResponseData<Object> responseData;
+
     @Autowired
-    private ProvService provService;
+    KelurahanService kelurahanService;
 
-    private ResponseData<Object> responseData;
-
-    @GetMapping
-    public ResponseEntity<?> getProv(@RequestParam(value = "code", defaultValue = "") Integer code) {
-        responseData = provService.getAllProv(code);
+    @PostMapping
+    public ResponseEntity<Object> createKelurahan(@RequestBody KelurahanDto kelurahanDto) {
+        responseData = kelurahanService.createKelurahan(kelurahanDto);
         return ResponseEntity.status(responseData.getStatus()).body(responseData);
     }
 
-    @PostMapping
-    public ResponseEntity<?> createProv(@RequestBody ProvinsiDto provinsiDto) {
-        responseData = provService.createProv(provinsiDto);
+    @GetMapping
+    public ResponseEntity<Object> getKelurahan(@RequestParam(value = "code", defaultValue = "")Integer code) {
+        responseData = kelurahanService.getKelurahan(code);
         return ResponseEntity.status(responseData.getStatus()).body(responseData);
     }
 
     @PutMapping("/{code}")
-    public ResponseEntity<?> updateProv(@PathVariable Integer code, @RequestBody ProvinsiDto provinsiDto) {
-        responseData = provService.updateProv(code, provinsiDto);
+    public ResponseEntity<Object> updateKelurahan(@PathVariable Integer code, @RequestBody KelurahanDto kelurahanDto){
+        responseData = kelurahanService.updateKelurahan(code, kelurahanDto);
         return ResponseEntity.status(responseData.getStatus()).body(responseData);
     }
 
     @DeleteMapping("/{code}")
-    public ResponseEntity<?> deleteProv(@PathVariable Integer code) {
-        responseData = provService.deletePRov(code);
+    public ResponseEntity<Object> deleteKelurahan(@PathVariable Integer code){
+        responseData = kelurahanService.deleteKelurahan(code);
         return ResponseEntity.status(responseData.getStatus()).body(responseData);
     }
-}
+}   

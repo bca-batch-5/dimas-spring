@@ -1,15 +1,11 @@
 package Api.tugas.repository;
 
-
-
-
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import Api.tugas.model.Provinsi;
+import Api.tugas.model.Kelurahan;
 
 @Repository
-public interface ProvinsiRepo extends JpaRepository<Provinsi,Integer> {
-    Provinsi findByprovCode(Integer code);
+public interface KelurahanRepo extends JpaRepository<Kelurahan, Integer> {
+    Kelurahan findByCodeKel(Integer code);
 }
